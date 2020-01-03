@@ -2,7 +2,9 @@ package com.gf;
 
 import com.gf.entity.Article;
 import com.gf.entity.Book;
+import com.gf.entity.FQuestionElasticssearch;
 import com.gf.repository.BookRepository;
+import com.gf.repository.QuestionElasticsearchRepository;
 import io.searchbox.client.JestClient;
 import io.searchbox.core.Index;
 import io.searchbox.core.Search;
@@ -22,14 +24,16 @@ public class SpringbootElasticsearchApplicationTests {
 
 	@Autowired
 	BookRepository bookRepository;
+	@Autowired
+	QuestionElasticsearchRepository questionElasticsearchRepository;
 
 	@Test
 	public void createIndex2(){
-		Book book = new Book();
-		book.setId(1);
-		book.setBookName("西游记");
-		book.setAuthor( "吴承恩" );
-		bookRepository.index( book );
+		FQuestionElasticssearch fQuestionElasticssearch = new FQuestionElasticssearch();
+		fQuestionElasticssearch.setCatory("六脉神剑");
+		fQuestionElasticssearch.setContent("天下无敌");
+		fQuestionElasticssearch.setTitle("六神无主");
+		questionElasticsearchRepository.index( fQuestionElasticssearch );
 	}
 
 	@Test
